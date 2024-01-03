@@ -18,7 +18,7 @@ function CreateHeader() {
     header.setAttribute("class", "bg-dark d-flex justify-content-between");
 
     var logoDiv = document.createElement("div");
-    logoDiv.setAttribute("id","logo");
+    logoDiv.setAttribute("id", "logo");
     logoDiv.setAttribute("class", "d-flex justify-content-center align-items-center");
     logoDiv.setAttribute("style", "width:20%;height:70px;");
 
@@ -28,13 +28,13 @@ function CreateHeader() {
     logoDiv.appendChild(imgElement);
 
     var searchDiv = document.createElement("div");
-    searchDiv.setAttribute("id", "SearchInput");
     searchDiv.setAttribute("style", "width:50%; height:70px;");
     searchDiv.setAttribute("class", "d-flex justify-content-center align-items-center");
 
     var searchInput = document.createElement("input");
     searchInput.setAttribute("type", "text");
     searchInput.setAttribute("placeholder", "Search product");
+    searchInput.setAttribute("id", "SearchInput");
     searchInput.setAttribute("style", "width:70%;height:40px;");
     searchDiv.addEventListener("keyup", () => {
         SearchProduct();
@@ -42,7 +42,7 @@ function CreateHeader() {
     searchDiv.appendChild(searchInput);
 
     var menuDiv = document.createElement("div");
-    menuDiv.setAttribute("id","menuDiv");
+    menuDiv.setAttribute("id", "menuDiv");
     menuDiv.setAttribute("style", "width:20%; height:70px;");
     menuDiv.setAttribute("class", "d-flex justify-content-around align-items-center");
     var loginStatus = isloggedIn();
@@ -64,23 +64,22 @@ function CreateHeader() {
             var cartItemsList = cartListItems.cartItems;
 
             // emptyCartList(cartItemsList);
-
             var newContainer = document.createElement("div");
             newContainer.setAttribute("id", "new-container");
             newContainer.setAttribute("style", "width:100%;display:flex;");
 
             var leftColoum = document.createElement("div");
             leftColoum.setAttribute("style", "width:60%;");
-            leftColoum.setAttribute("id","leftColoum")
+            leftColoum.setAttribute("id", "leftColoum")
             leftColoum.setAttribute("class", "container-fluid col-md-8")
 
             var rightColoum = document.createElement("div");
             rightColoum.setAttribute("style", "width:40%;");
-            rightColoum.setAttribute("id","rightColoum")
+            rightColoum.setAttribute("id", "rightColoum")
 
 
             var table = document.createElement("table");
-            table.setAttribute("class","border")
+            table.setAttribute("class", "border")
             table.setAttribute("style", "width:100%;text-align:center;")
             var thead = document.createElement("thead");
             thead.setAttribute("style", "height:30px;")
@@ -108,19 +107,19 @@ function CreateHeader() {
             tr.append(Total);
 
             var tbody = document.createElement("tbody");
-            tbody.setAttribute("style","text-align:center;")
-            tbody.setAttribute("class","border")
+            tbody.setAttribute("style", "text-align:center;")
+            tbody.setAttribute("class", "border")
             for (var index in cartItemsList) {
                 let tr = document.createElement("tr");
                 tr.setAttribute("style", "border:1px solid;")
                 let sNo = document.createElement("td");
                 sNo.setAttribute("style", "")
-                sNo.innerHTML = index * 1 + 1+".";
+                sNo.innerHTML = index * 1 + 1 + ".";
                 tr.appendChild(sNo);
 
                 let image = document.createElement("img");
-                image.setAttribute("style","width:100px;height:100px;")
-                image.setAttribute("src",cartItemsList[index].thumbnail);
+                image.setAttribute("style", "width:100px;height:100px;")
+                image.setAttribute("src", cartItemsList[index].thumbnail);
                 // image.innerHTML = cartItemsList[index].thumbnail;
                 tr.appendChild(image);
 
@@ -135,8 +134,8 @@ function CreateHeader() {
                 tr.appendChild(Price);
 
                 let qty = document.createElement("td");
-                qty.innerHTML = "<input onchange='updateQty(" + cartItemsList[index].id + "," + index + ")' style='width:50px' id='qtyChange" + index + "' type='number' max='20' min='1' value='"+getQuantity(index)+"'/>";
-                
+                qty.innerHTML = "<input onchange='updateQty(" + cartItemsList[index].id + "," + index + ")' style='width:50px' id='qtyChange" + index + "' type='number' max='20' min='1' value='" + getQuantity(index) + "'/>";
+
                 tr.appendChild(qty);
 
                 let total = document.createElement("td");
@@ -144,6 +143,7 @@ function CreateHeader() {
                 // total.innerHTML = ""+cartItemsList[index].price;
                 total.innerText = cartItemsList[index].price;
                 tr.appendChild(total);
+
 
                 tbody.appendChild(tr);
             }
@@ -254,11 +254,11 @@ function CreateHeader() {
 function createCart(data) {
     var mainDiv = document.querySelector("#mainDiv");
     var cartContainer = document.createElement("div");
-    cartContainer.setAttribute("style","flex-direction:row;")
+    cartContainer.setAttribute("style", "flex-direction:row;")
     cartContainer.setAttribute("class", "container-fluid mt-5 p-2 d-flex flex-wrap justify-content-around");
     cartContainer.setAttribute("style", " row-gap:10px;");
     cartContainer.setAttribute("id", "cart-container");
-    let index = 0*1;
+    let index = 0 * 1;
     for (let product of data) {
         index++;
         let cartDiv = document.createElement("div");
@@ -297,12 +297,12 @@ function createCart(data) {
         addToCart.setAttribute("class", "text-center ");
         addToCart.setAttribute("style", "width: 80%; height: 40px; background-color: gold; border: none; margin: auto")
         addToCart.innerHTML = "Add to Cart";
-        addToCart.id = "addtocart"+index;
-        addToCart.addEventListener("mouseover",()=>{
+        addToCart.id = "addtocart" + index;
+        addToCart.addEventListener("mouseover", () => {
             addToCart.style.backgroundColor = "lightgreen";
             console.log(addToCart.id)
         });
-        addToCart.addEventListener("mouseout",()=>{
+        addToCart.addEventListener("mouseout", () => {
             addToCart.style.backgroundColor = "gold";
         });
         addToCart.addEventListener("click", () => {
@@ -323,9 +323,9 @@ function signUp() {
     var mainDiv = document.getElementById("mainDiv");
     mainDiv.innerHTML = "";
     var loginpage = document.createElement("div");
-    loginpage.setAttribute("id","loginpage")
+    loginpage.setAttribute("id", "loginpage")
     var h1 = document.createElement("h1");
-    h1.setAttribute("style","text-align:center;")
+    h1.setAttribute("style", "text-align:center;")
     h1.innerHTML = "Sing-up Page";
     loginpage.setAttribute("style", "display:flex;flex-direction:column;box-shadow:5px 5px 8px 8px grey; padding:20px; width:40%; height: auto;  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%)");
     // mainDiv.setAttribute("style", "width: 100%; height: 100vh;");
@@ -342,7 +342,7 @@ function signUp() {
 
     var emailSpan = document.createElement("span");
     emailSpan.id = "emailerror";
-    emailSpan.setAttribute("style","color:red;")
+    emailSpan.setAttribute("style", "color:red;")
 
     var signUpbutton = document.createElement("button");
     signUpbutton.setAttribute("class", "mt-3 btn btn-success")
@@ -377,9 +377,9 @@ function singIn() {
     var mainDiv = document.getElementById("mainDiv");
     mainDiv.innerHTML = "";
     var loginpage = document.createElement("div");
-    loginpage.setAttribute("id","loginpage");
+    loginpage.setAttribute("id", "loginpage");
     var h1 = document.createElement("h1");
-    h1.setAttribute("style","text-align:center;")
+    h1.setAttribute("style", "text-align:center;")
     h1.innerHTML = "Sign-in Page";
     loginpage.setAttribute("style", "display:flex;flex-direction:column;box-shadow:5px 5px 8px 8px grey; padding:20px; width:40%; height: auto;  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%)");
     // mainDiv.setAttribute("style", "width: 100%; height: 100vh;");
@@ -395,7 +395,7 @@ function singIn() {
 
     var emailSpan = document.createElement("span");
     emailSpan.id = "emailerror";
-    emailSpan.setAttribute("style","color:red;")
+    emailSpan.setAttribute("style", "color:red;")
 
 
     var signInbutton = document.createElement("button");
@@ -404,7 +404,7 @@ function singIn() {
     signInbutton.addEventListener("click", () => {
         signInButtonEvent();
     });
-    signInbutton.addEventListener("click",()=>{
+    signInbutton.addEventListener("click", () => {
         validationemail();
     })
     var back = document.createElement("button");
@@ -435,20 +435,20 @@ function signUpButtonEvent() {
     if (isUserExist(email)) {
         window.alert("user already exist")
     } else {
-        if(validationemail() && passwordStatus()){
-        var userList = JSON.parse(localStorage.getItem("userList"));
-        var user = { email: email, password: password };
-        userList.push(user);
-        localStorage.setItem("userList", JSON.stringify(userList));
-         alert("Sign-up Successfully")
-        var mainDiv = document.querySelector("#mainDiv");
-        mainDiv.innerHTML = "";
-        CreateHeader();
-        createCart(JSON.parse(localStorage.getItem("productList")));
-    }
-    else{
-        alert("Password length must be more than 5")
-    }
+        if (validationemail() && passwordStatus()) {
+            var userList = JSON.parse(localStorage.getItem("userList"));
+            var user = { email: email, password: password };
+            userList.push(user);
+            localStorage.setItem("userList", JSON.stringify(userList));
+            alert("Sign-up Successfully")
+            var mainDiv = document.querySelector("#mainDiv");
+            mainDiv.innerHTML = "";
+            CreateHeader();
+            createCart(JSON.parse(localStorage.getItem("productList")));
+        }
+        else {
+            alert("Password length must be more than 5")
+        }
     }
 }
 
@@ -594,101 +594,101 @@ function form() {
     container.innerHTML = "";
     container.setAttribute("style", "width:100%;display-flex;justify-content:center;align-items:center;")
 
-        var payment = document.createElement("div");
-        payment.id = "form"
-        payment.setAttribute("class", "container d-flex flex-column text-center p-3 border");
-        payment.setAttribute("style", "box-shadow: 4px 4px 7px 4px gray;top:50%;left:50%;transform:translate(-50%,-50%);")
-        payment.setAttribute("style","width : 70%; height: 70%")
+    var payment = document.createElement("div");
+    payment.id = "form"
+    payment.setAttribute("class", "container d-flex flex-column text-center p-3 border");
+    payment.setAttribute("style", "box-shadow: 4px 4px 7px 4px gray;top:50%;left:50%;transform:translate(-50%,-50%);")
+    payment.setAttribute("style", "width : 70%; height: 70%")
 
-        var heading = document.createElement("h1");
-        heading.setAttribute("class", "mb-4");
-        heading.innerHTML = "For Payment";  
+    var heading = document.createElement("h1");
+    heading.setAttribute("class", "mb-4");
+    heading.innerHTML = "For Payment";
 
-        var name = document.createElement("input");
-        name.setAttribute("id","name");
-        name.setAttribute("type", "name");
-        name.placeholder = "Enter Name";
-        name.setAttribute("class", " ml-5 p-3");
-        name.setAttribute("style", "width: 80%; height: 40px; outline: none;")
-        var nameerror = document.createElement("small");
-        nameerror.setAttribute("class","mb-5 text-danger")
-        nameerror.setAttribute("id","firstname");
-        name.addEventListener("keyup",()=>{
-            validationfname();
-        })
+    var name = document.createElement("input");
+    name.setAttribute("id", "name");
+    name.setAttribute("type", "name");
+    name.placeholder = "Enter Name";
+    name.setAttribute("class", " ml-5 p-3");
+    name.setAttribute("style", "width: 80%; height: 40px; outline: none;")
+    var nameerror = document.createElement("small");
+    nameerror.setAttribute("class", "mb-5 text-danger")
+    nameerror.setAttribute("id", "firstname");
+    name.addEventListener("keyup", () => {
+        validationfname();
+    })
 
-        var email = document.createElement("input");
-        email.setAttribute("type", "email");
-        email.setAttribute("id","email");
-        email.setAttribute("class", " ml-5 p-3");
-        email.setAttribute("style", "width: 80%; height: 40px; outline: none;");
-        email.placeholder = "Email address";
-        var emailerror = document.createElement("small");
-        emailerror.setAttribute("id","emailerror");
-        emailerror.setAttribute("class","mb-5 text-danger");
-        email.addEventListener("keyup",()=>{
-            validationemail();
-        })
-        
-        var phone = document.createElement("input");
-        // phone.setAttribute("type", "number");
-        phone.setAttribute("id","phone");
-        phone.setAttribute("class", "ml-5 p-3")
-        phone.setAttribute("style", "width: 80%; height: 40px; outline: none;");
-        phone.placeholder = "Phone number";
-        var phoneerror = document.createElement("small");
-        phoneerror.setAttribute("class","mb-5 text-danger");
-        phoneerror.setAttribute("id","phoneerror");
-        phone.addEventListener("keyup",()=>{
-            validationphone();
-        })
+    var email = document.createElement("input");
+    email.setAttribute("type", "email");
+    email.setAttribute("id", "email");
+    email.setAttribute("class", " ml-5 p-3");
+    email.setAttribute("style", "width: 80%; height: 40px; outline: none;");
+    email.placeholder = "Email address";
+    var emailerror = document.createElement("small");
+    emailerror.setAttribute("id", "emailerror");
+    emailerror.setAttribute("class", "mb-5 text-danger");
+    email.addEventListener("keyup", () => {
+        validationemail();
+    })
 
-        let div = document.createElement("div");
-        let labelforPrice = document.createElement("label");
-        labelforPrice.setAttribute("style","display:inline;font-size:25px;font-weight:500;")
-        labelforPrice.innerHTML = "Total Bill Rs. "
-        var amount = document.createElement("input");
-        amount.setAttribute("class", "ml-5 mb-4 p-3 disabled");
-        // amount.id = "totalAmount";
-        amount.disabled = "true";
-        amount.setAttribute("style", "width: 20%; height: 40px; outline: none;display-inline");
-        amount.setAttribute("value",""+getBillAmount());
+    var phone = document.createElement("input");
+    // phone.setAttribute("type", "number");
+    phone.setAttribute("id", "phone");
+    phone.setAttribute("class", "ml-5 p-3")
+    phone.setAttribute("style", "width: 80%; height: 40px; outline: none;");
+    phone.placeholder = "Phone number";
+    var phoneerror = document.createElement("small");
+    phoneerror.setAttribute("class", "mb-5 text-danger");
+    phoneerror.setAttribute("id", "phoneerror");
+    phone.addEventListener("keyup", () => {
+        validationphone();
+    })
 
-        var buttons = document.createElement("div");
-        var proceedTopay = document.createElement("button");
-        proceedTopay.setAttribute("class", "m-3 mb-3");
-        proceedTopay.innerHTML = "Proceed To Pay";
-        proceedTopay.setAttribute("style", "width: 150px; height: 40px;background-color:green;border:none;color:white");
-        proceedTopay.addEventListener("click",()=>{
-           return validation();
-        })
+    let div = document.createElement("div");
+    let labelforPrice = document.createElement("label");
+    labelforPrice.setAttribute("style", "display:inline;font-size:25px;font-weight:500;")
+    labelforPrice.innerHTML = "Total Bill Rs. "
+    var amount = document.createElement("input");
+    amount.setAttribute("class", "ml-5 mb-4 p-3 disabled");
+    // amount.id = "totalAmount";
+    amount.disabled = "true";
+    amount.setAttribute("style", "width: 20%; height: 40px; outline: none;display-inline");
+    amount.setAttribute("value", "" + getBillAmount());
 
-        var back = document.createElement("button");
-        back.innerHTML = "Exit";
-        back.setAttribute("class", "m-3 mb-3");
-        back.setAttribute("style", "width: 150px; height: 40px; background-color:red;border:none;color:white");
+    var buttons = document.createElement("div");
+    var proceedTopay = document.createElement("button");
+    proceedTopay.setAttribute("class", "m-3 mb-3");
+    proceedTopay.innerHTML = "Proceed To Pay";
+    proceedTopay.setAttribute("style", "width: 150px; height: 40px;background-color:green;border:none;color:white");
+    proceedTopay.addEventListener("click", () => {
+        return validation();
+    })
 
-        back.addEventListener("click", () => {
-            // viewCartContainer.innerHTML = "";
-            document.getElementById("mainDiv").innerHTML = "";
-            CreateHeader();
-            createCart(getProducts());
-        })
+    var back = document.createElement("button");
+    back.innerHTML = "Exit";
+    back.setAttribute("class", "m-3 mb-3");
+    back.setAttribute("style", "width: 150px; height: 40px; background-color:red;border:none;color:white");
 
-        buttons.appendChild(proceedTopay);
-        buttons.appendChild(back);
-        payment.appendChild(heading);
-        payment.appendChild(name);
-        payment.appendChild(nameerror);
-        payment.appendChild(email);
-        payment.appendChild(emailerror);
-        payment.appendChild(phone);
-        payment.appendChild(phoneerror);
-        payment.appendChild(div);
-        div.appendChild(labelforPrice);
-        div.appendChild(amount);
-        payment.appendChild(buttons);
-   container.appendChild(payment);
+    back.addEventListener("click", () => {
+        // viewCartContainer.innerHTML = "";
+        document.getElementById("mainDiv").innerHTML = "";
+        CreateHeader();
+        createCart(getProducts());
+    })
+
+    buttons.appendChild(proceedTopay);
+    buttons.appendChild(back);
+    payment.appendChild(heading);
+    payment.appendChild(name);
+    payment.appendChild(nameerror);
+    payment.appendChild(email);
+    payment.appendChild(emailerror);
+    payment.appendChild(phone);
+    payment.appendChild(phoneerror);
+    payment.appendChild(div);
+    div.appendChild(labelforPrice);
+    div.appendChild(amount);
+    payment.appendChild(buttons);
+    container.appendChild(payment);
 }
 
 function validationfname() {
@@ -759,7 +759,7 @@ function validationemail() {
 function validationphone() {
     var phoneobj = document.getElementById("phone").value;
     var phonerror = document.getElementById("phoneerror");
-   let  status = true;
+    let status = true;
     if (isNaN(phoneobj)) {
         status = false;
         phonerror.innerHTML = "Only number allow";
@@ -777,7 +777,7 @@ function validation() {
     var fnamestatus = validationfname();
     var emailstatus = validationemail();
     var phonestatus = validationphone();
-    if (fnamestatus &&  emailstatus && phonestatus){
+    if (fnamestatus && emailstatus && phonestatus) {
         document.querySelector("#mainDiv").innerHTML = "";
         window.alert("Payment Successfully");
         CreateHeader();
@@ -787,31 +787,32 @@ function validation() {
     return false;
 }
 
-function getQuantity(index){
+function getQuantity(index) {
     var currentUser = sessionStorage.getItem("currentUser");
     var cartList = JSON.parse(localStorage.getItem("cartList"));
 
-    var currentusercartList = cartList.find((obj)=>{return obj.email == currentUser});
+    var currentusercartList = cartList.find((obj) => { return obj.email == currentUser });
 
     var qty = currentusercartList.cartItems[index].qty;
-    
+
     return qty;
 }
 
-function passwordStatus(){
+function passwordStatus() {
     var pass = document.getElementById("password-sign-up").value;
     // let status = true;
-    if(pass.length<=5)
+    if (pass.length <= 5)
         return false;
     else
         return true
 }
 
-function emptyCartList(){
-  var vc = document.getElementById("vc");
-  var cart = document.getElementById("cart-container");
-   if(vc.id=='vc'){
-   cart.innerHTML  = "product not added";
-    // alert("error")
+function emptyCartList() {
+    var vc = document.getElementById("vc");
+    var cart = document.getElementById("cart-container");
+    if (vc.id == 'vc') {
+        cart.innerHTML = "product not added";
+        // alert("error")
     }
 }
+
